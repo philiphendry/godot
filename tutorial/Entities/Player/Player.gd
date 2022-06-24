@@ -4,6 +4,7 @@ extends KinematicBody2D
 export var speed = 75
 
 var last_direction = Vector2(0, 1)
+var attack_playing = false
 
 func _physics_process(delta):
 	# Get player input
@@ -17,10 +18,25 @@ func _physics_process(delta):
 	
 	# Apply movement
 	var movement = speed * direction * delta
+	
+	if attack_playing:
+		movement = 0.3 * movement
+	
 	move_and_collide(movement)
 	
 	# Animate player based on direction
-	animates_player(direction)
+	if not attack_playing:
+		animates_player(direction)
+
+func _input(event):
+	if event.is_action_pressed("attack"):
+		attack_playing = true
+		var animation = get_animation_direction(last_direction) + "_attack"
+		$Sprite.play(animation)
+	elif event.is_action_pressed("fireball"):
+		attack_playing = true
+		var animation = get_animation_direction(last_direction) + "_fireball"
+		$Sprite.play(animation)
 
 func animates_player(direction: Vector2):
 	if direction != Vector2.ZERO:		
@@ -50,3 +66,7 @@ func get_animation_direction(direction: Vector2):
 	elif norm_direction.x >= 0.707:
 		return "right"
 	return "down"
+
+
+func _on_Sprite_animation_finished():
+	attack_playing = false
