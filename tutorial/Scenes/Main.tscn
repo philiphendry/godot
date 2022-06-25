@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Entities/Player/player_down_idle_1.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=2]
@@ -38,6 +38,7 @@
 [ext_resource path="res://GUI/Mana.gd" type="Script" id=36]
 [ext_resource path="res://GUI/potions.png" type="Texture" id=37]
 [ext_resource path="res://Fonts/Font.tres" type="DynamicFont" id=38]
+[ext_resource path="res://Entities/SkeletonSpawner/SkeletonSpawner.tscn" type="PackedScene" id=39]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -46,19 +47,34 @@ animations = [ {
 "name": "left_fireball",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 32 ), ExtResource( 28 ), ExtResource( 25 ) ],
+"frames": [ ExtResource( 22 ), ExtResource( 29 ), ExtResource( 18 ) ],
 "loop": false,
-"name": "right_attack",
-"speed": 7.0
+"name": "left_attack",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 1 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "down_idle",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 1 ), ExtResource( 5 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 22 ), ExtResource( 20 ), ExtResource( 22 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "left_walk",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 32 ), ExtResource( 26 ), ExtResource( 27 ) ],
 "loop": false,
-"name": "down_attack",
+"name": "right_fireball",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "left_idle",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 32 ), ExtResource( 28 ), ExtResource( 25 ) ],
+"loop": false,
+"name": "right_attack",
 "speed": 7.0
 }, {
 "frames": [ ExtResource( 1 ), ExtResource( 8 ), ExtResource( 1 ), ExtResource( 21 ) ],
@@ -66,30 +82,10 @@ animations = [ {
 "name": "down_walk",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 22 ), ExtResource( 20 ), ExtResource( 22 ), ExtResource( 24 ) ],
-"loop": true,
-"name": "left_walk",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 1 ), ExtResource( 6 ), ExtResource( 7 ) ],
-"loop": false,
-"name": "down_fireball",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 22 ), ExtResource( 29 ), ExtResource( 18 ) ],
-"loop": false,
-"name": "left_attack",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 15 ), ExtResource( 11 ), ExtResource( 15 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "up_walk",
 "speed": 10.0
-}, {
-"frames": [ ExtResource( 32 ), ExtResource( 26 ), ExtResource( 27 ) ],
-"loop": false,
-"name": "right_fireball",
-"speed": 7.0
 }, {
 "frames": [ ExtResource( 32 ), ExtResource( 30 ) ],
 "loop": true,
@@ -101,19 +97,24 @@ animations = [ {
 "name": "right_walk",
 "speed": 10.0
 }, {
+"frames": [ ExtResource( 15 ), ExtResource( 12 ), ExtResource( 10 ) ],
+"loop": false,
+"name": "up_fireball",
+"speed": 7.0
+}, {
 "frames": [ ExtResource( 15 ), ExtResource( 17 ), ExtResource( 14 ) ],
 "loop": false,
 "name": "up_attack",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 22 ), ExtResource( 19 ) ],
-"loop": true,
-"name": "left_idle",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 15 ), ExtResource( 12 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 1 ), ExtResource( 5 ), ExtResource( 9 ) ],
 "loop": false,
-"name": "up_fireball",
+"name": "down_attack",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": false,
+"name": "down_fireball",
 "speed": 7.0
 }, {
 "frames": [ ExtResource( 15 ), ExtResource( 16 ) ],
@@ -135,6 +136,7 @@ script = ExtResource( 2 )
 [node name="Sprite" type="AnimatedSprite" parent="Player"]
 frames = SubResource( 2 )
 animation = "down_idle"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -275,6 +277,8 @@ margin_bottom = 16.0
 custom_fonts/font = ExtResource( 38 )
 text = "0"
 align = 2
+
+[node name="SkeletonSpawner" parent="." instance=ExtResource( 39 )]
 
 [connection signal="player_stats_changed" from="Player" to="CanvasLayer/Health" method="_on_Player_player_stats_changed"]
 [connection signal="player_stats_changed" from="Player" to="CanvasLayer/Mana" method="_on_Player_player_stats_changed"]
