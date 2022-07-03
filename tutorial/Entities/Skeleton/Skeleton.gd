@@ -6,6 +6,9 @@ var player
 # Random number generator
 var rng = RandomNumberGenerator.new()
 
+# Reference to potion scene
+var potion_scene = preload("res://Entities/Potion/Potion.tscn")
+
 # Movement variables
 export var speed = 25
 var direction : Vector2
@@ -129,6 +132,17 @@ func hit(damage):
 		other_animation_playing = true
 		$AnimatedSprite.play("death")
 		emit_signal("death")
+		
+		# 80% probability to drop a potion on death
+		if rng.randf() <= 0.8:
+			var potion = potion_scene.instance()
+			potion.type = rng.randi() % 2
+			# It isn’t safe to add a new Area2D to the node tree inside a function 
+			# that handles the on_area_entered() signal of another Area2D node. 
+			# We must therefore use call_deferred() to defer the call to add_child()
+			# during idle time.
+			get_tree().root.get_node("Root").call_deferred("add_child", potion)
+			potion.position = position
 
 func _on_AnimatedSprite_animation_finished():
 	if $AnimatedSprite.animation == "birth":
