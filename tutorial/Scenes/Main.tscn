@@ -42,39 +42,34 @@
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 34 ) ],
-"loop": false,
-"name": "left_fireball",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 22 ), ExtResource( 29 ), ExtResource( 18 ) ],
-"loop": false,
-"name": "left_attack",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 1 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 22 ), ExtResource( 19 ) ],
 "loop": true,
-"name": "down_idle",
+"name": "left_idle",
 "speed": 1.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 5 ), ExtResource( 9 ) ],
+"loop": false,
+"name": "down_attack",
+"speed": 7.0
 }, {
 "frames": [ ExtResource( 22 ), ExtResource( 20 ), ExtResource( 22 ), ExtResource( 24 ) ],
 "loop": true,
 "name": "left_walk",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 32 ), ExtResource( 26 ), ExtResource( 27 ) ],
+"frames": [ ExtResource( 22 ), ExtResource( 29 ), ExtResource( 18 ) ],
 "loop": false,
-"name": "right_fireball",
-"speed": 7.0
+"name": "left_attack",
+"speed": 5.0
 }, {
-"frames": [ ExtResource( 22 ), ExtResource( 19 ) ],
+"frames": [ ExtResource( 32 ), ExtResource( 30 ) ],
 "loop": true,
-"name": "left_idle",
+"name": "right_idle",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 32 ), ExtResource( 28 ), ExtResource( 25 ) ],
+"frames": [ ExtResource( 15 ), ExtResource( 17 ), ExtResource( 14 ) ],
 "loop": false,
-"name": "right_attack",
+"name": "up_attack",
 "speed": 7.0
 }, {
 "frames": [ ExtResource( 1 ), ExtResource( 8 ), ExtResource( 1 ), ExtResource( 21 ) ],
@@ -82,34 +77,39 @@ animations = [ {
 "name": "down_walk",
 "speed": 10.0
 }, {
+"frames": [ ExtResource( 32 ), ExtResource( 28 ), ExtResource( 25 ) ],
+"loop": false,
+"name": "right_attack",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "down_idle",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "up_idle",
+"speed": 1.0
+}, {
 "frames": [ ExtResource( 15 ), ExtResource( 11 ), ExtResource( 15 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "up_walk",
 "speed": 10.0
-}, {
-"frames": [ ExtResource( 32 ), ExtResource( 30 ) ],
-"loop": true,
-"name": "right_idle",
-"speed": 1.0
 }, {
 "frames": [ ExtResource( 32 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ) ],
 "loop": true,
 "name": "right_walk",
 "speed": 10.0
 }, {
+"frames": [ ExtResource( 32 ), ExtResource( 26 ), ExtResource( 27 ) ],
+"loop": false,
+"name": "right_fireball",
+"speed": 7.0
+}, {
 "frames": [ ExtResource( 15 ), ExtResource( 12 ), ExtResource( 10 ) ],
 "loop": false,
 "name": "up_fireball",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 15 ), ExtResource( 17 ), ExtResource( 14 ) ],
-"loop": false,
-"name": "up_attack",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 1 ), ExtResource( 5 ), ExtResource( 9 ) ],
-"loop": false,
-"name": "down_attack",
 "speed": 7.0
 }, {
 "frames": [ ExtResource( 1 ), ExtResource( 6 ), ExtResource( 7 ) ],
@@ -117,10 +117,10 @@ animations = [ {
 "name": "down_fireball",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 15 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "up_idle",
-"speed": 1.0
+"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 34 ) ],
+"loop": false,
+"name": "left_fireball",
+"speed": 7.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=1]
